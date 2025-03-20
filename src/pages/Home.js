@@ -60,6 +60,7 @@ function Home() {
 
       {/* Altına Resim ve "Nah basarsın" Yazısı */}
       <div className="nah-section">
+      <p className="nah-text">YETER SORGULAMA SENİ AZRAİL DEĞİL MERAK ÖLDÜRECEK</p>
         <img
           src="https://i.hizliresim.com/LyoPgz.png"
           alt="Nah Basarsın"
