@@ -5,10 +5,9 @@ import "./Home.css";
 function Home() {
   const navigate = useNavigate();
   const [position, setPosition] = useState({ top: "auto", left: "auto" });
-  const [isMoving, setIsMoving] = useState(false); // Hareket etmeye başlamak için kontrol
+  const [isMoving, setIsMoving] = useState(false);
 
   useEffect(() => {
-    // 2 saniye sonra buton hareket etmeye başlayacak
     const startMovingTimeout = setTimeout(() => {
       setIsMoving(true);
     }, 2000);
@@ -17,19 +16,19 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    if (!isMoving) return; // Eğer hareket başlamadıysa, fonksiyonu çalıştırma
+    if (!isMoving) return;
 
     const moveButton = () => {
-      const maxWidth = window.innerWidth - 80; // Butonun çıkmaması için sınır
-      const maxHeight = window.innerHeight - 70;
+      const maxWidth = window.innerWidth - 80;
+      const maxHeight = window.innerHeight - 80;
 
-      const newTop = Math.random() * maxHeight + "px"; // Tüm ekran içinde yukarı-aşağı rastgele kaçma
-      const newLeft = Math.random() * maxWidth + "px"; // Tam ekran içinde sağa-sola rastgele kaçma
+      const newTop = Math.random() * maxHeight + "px";
+      const newLeft = Math.random() * maxWidth + "px";
 
       setPosition({ top: newTop, left: newLeft });
     };
 
-    const interval = setInterval(moveButton, 300); // 0.2 saniyede bir hareket etsin
+    const interval = setInterval(moveButton, 200);
     return () => clearInterval(interval);
   }, [isMoving]);
 
@@ -48,7 +47,7 @@ function Home() {
             className="no"
             style={{
               position: "absolute",
-              top: isMoving ? position.top : "calc(100% + 10px)", // Başlangıçta "Evet"in altında
+              top: isMoving ? position.top : "calc(100% + 10px)",
               left: isMoving ? position.left : "50%",
               transform: "translateX(-50%)",
               pointerEvents: "none",
@@ -57,6 +56,16 @@ function Home() {
             Hayır
           </button>
         </div>
+      </div>
+
+      {/* Altına Resim ve "Nah basarsın" Yazısı */}
+      <div className="nah-section">
+        <img
+          src="https://i.hizliresim.com/LyoPgz.png"
+          alt="Nah Basarsın"
+          className="nah-image"
+        />
+        <p className="nah-text">Nah basarsın</p>
       </div>
     </div>
   );
